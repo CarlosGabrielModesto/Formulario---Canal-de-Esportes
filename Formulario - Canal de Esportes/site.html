@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Assinantes - Canais de Esporte</title>
+    <link rel="stylesheet" href="_css/estilo.css">
+    <!--1 segundo a mais, quando o cronometro chegar a zero, a página reinicia-->
+    <!--Contente = "181" = segundo-->
+    <meta http-equiv="refresh" content="181">
+</head>
+
+<body onload="soma()">
+
+    <main>
+
+        <div class="formulario">
+            <form name="form" id="form" onsubmit="return validar_tudo();">
+
+                <h1>Cadastro de Assinantes <br> <span>(Canais de Esporte)</span> </h1>
+                <hr><br><br>
+
+                <!-- Temporizador -->
+                <h5 class="tempo">Cronômetro:<spam id="tempo"></spam>
+                </h5><br>
+
+                <div></div>
+                <label for="nome">Nome:</label>
+                <input type="text" name="nome" id="nome" autocomplete="off">
+                <hr><br>
+
+                <label for="cpf">CPF:</label>
+                <input type="text" name="cpf" id="cpf" autocomplete="off" required class="mascara-cpf">
+                <hr><br>
+
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" autocomplete="off">
+                <hr><br>
+
+                <label for="tel">Celular:</label>
+                <input type="text" name="cel" id="cel" autocomplete="off" class="celular">
+                <hr><br>
+
+                <label for="nascimento">Data Nascimento</label>
+                <input type="date" name="nascimento" id="nascimento" required autocomplete="off">
+                <hr><br>
+
+                <label for="salario">Salário:</label>
+                <input type="text" name="salario" id="salario" autocomplete="off" style="text-align: right;">
+                <hr><br>
+
+                <label for="sexo">Gênero:</label>
+                <input type="radio" name="sexo" id="sexo" value="M" checked>Masculino
+                <input type="radio" name="sexo" id="sexo" value="F">Feminino
+                <input type="radio" name="sexo" id="sexo" value="O">Outro
+                <hr><br>
+
+                <label for="futebol">Time de Futebol:</label>
+                <select name="times" id="times">
+                    <option value="Vasco">Vasco</option>
+                    <option value="São Paulo">São Paulo</option>
+                    <option value="Fluminense">Fluminense</option>
+                    <option value="Santos">Santos</option>
+                </select>
+                <hr><br>
+
+                <label for="planos">Planos:</label>
+                <br><br>
+                <input type="radio" name="planos" id="planos" value="M" onclick="soma();" checked>Mensal - R$
+                85,00 <br>
+                <input type="radio" name="planos" id="planos" value="Q" onclick="soma();">Quadrimestral - R$
+                300,00 <br>
+                <input type="radio" name="planos" id="planos" value="A" onclick="soma();">Anual - R$ 600,00
+                <hr><br>
+
+
+                <!--Canais Incluídos-->
+
+                <div> <label>Canais Incluídos:</label><br><br>
+                    <div id="canais-inclusos">
+
+                        <div id="plano-mensal">
+
+                            <h3>Plano Mensal ⬇</h3>
+                            <div>
+                                <ul>
+                                    <li>SKY</li>
+                                    <li>NBA</li>
+                                    <li>GLOBO</li>
+                                </ul>
+                            </div>
+                            <h3>Plano Quadrimestral ⬇</h3>
+                            <div>
+                                <ul>
+                                    <li>SKY 2</li>
+                                    <li>NBA 2</li>
+                                    <li>GLOBO 2</li>
+                                </ul>
+                            </div>
+                            <h3>Plano Anual ⬇</h3>
+                            <div>
+                                <ul>
+                                    <li>SKY 3</li>
+                                    <li>NBA 3</li>
+                                    <li>GLOBO 3</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <hr><br>
+
+                <div>
+                    <label for="premiere">Premiere:</label>
+                    <br><br>
+                    <input type="radio" name="premiere" id="premiere" value="E" onclick="soma();" checked>Econômico
+                    - 12
+                    x
+                    R$ 60,00<br>
+                    <input type="radio" name="premiere" id="premiere" value="C" onclick="soma();">Controle -
+                    Mensal
+                    R$
+                    80,00
+                </div>
+                <hr><br>
+
+                <div>
+                    <label for="total">Total (mensal):</label>
+                    <input type="text" name="total" id="total" readonly style="text-align: right;">
+                </div>
+                <hr><br><br>
+
+                <div>
+                    <label for="login">Para assinar, informe <br> Login e Senha:</label>
+                    <br><br>
+
+                    <section class="registro">
+                        <input type="text" name="login" id="login" autocomplete="off"
+                            placeholder="Login (teste JSON: Usuario)" maxlength="15" minlength="5" size=22> <br>
+                        <input type="password" name="senha" id="senha" autocomplete="off"
+                            placeholder="Senha (teste JSON: Abc$123)" maxlength="8" minlength="6" size=22>
+                    </section>
+                </div>
+                <br><br>
+
+                <div class="botao">
+                    <button type="submit">VALIDAR</button>
+                    <input type="button" name="botao-oculto" id="botao-oculto" value="ASSINAR" disabled
+                        onclick="alert('Assinatura realizada com sucesso!!!');">
+                </div>
+
+            </form>
+        </div>
+<br>
+    </main>
+
+    <br>
+
+    <!-- SEÇÃO DE LINKS PARA JAVASCRIPT -->
+
+    <!-- Frameworks Jquey -->
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <!-- Frameworks Jquey Para Validação -->
+    <script src="http://jqueryvalidation.org/files/dist/jquery.validate.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js"></script>
+    <!-- validar (JS / JSON / REGEX) -->
+    <script src="_javascript/form_tools.js"></script>
+    <script src="_javascript/validacao.js"></script>
+
+</body>
+
+</html>
